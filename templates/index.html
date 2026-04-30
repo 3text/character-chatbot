@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<title> メッセージアプリ風チャット </title>
+
+		<script src="{{ url_for('static', filename='scripts.js')}}" defer></script>
+
+	</head>
+
+	<body>
+		<!-- 例外処理があればメッセージを表示する-->
+		<div id="errorOverlay" class = "overlay">
+			<div class="over_message_card">
+				<p class="message">{{exception_message | safe}}</p> <!--エラーメッセージはPython側で生成-->
+				<button onclick="closeOverlay()" class="send_button" style="margin-top: 15px;">閉じる</button>
+			</div>
+		</div>
+		
+		<div class = "container"> <!-- 一番外の箱 -->
+
+			<div class = "chat_area"
+				data-model-name = "{{name.model_name}}"
+				data-model-icon = "{{url_for('static', filename=model_icon_url)}}"
+			>
+				<!-- ここから表示 -->
+				{% for item in all_message %}
+
+					{% if item.role == "model" %}
+						<div class="model">
+
+							<div class="icon">
+								<img src="{{url_for('static', filename=model_icon_url)}}" alt="🐦‍⬛">
+							</div>
+							
+							<div class="message">
+								<p class="name">{{name.model_name}}</p>
+								<p class="content">{{item.parts[0].text}}</p>
+							</div>
+						</div>
+					{% else %}
+
+						<div class="user">
+
+							<div class="icon">❤️</div>
+
+							<div class="message">
+								<p class="name">{{name.user_name}}</p>
+								<p class="content">{{item.parts[0].text}}</p>
+							</div>
+						</div>
+
+					{% endif %}
+				{% endfor %}
+			</div>
+
+			<!-- ここから入力フォーム -->
+			<form method="POST">
+				<div class="input_area">
+					<p class="input_parts">
+						<textarea class="user_text" name="user_input" maxlength="200" placeholder="200字以内ではなしかけてね！" rows="1"></textarea>
+						<button class="send_button">send</button>
+					</p>
+				</div>
+			</form>
+		</div>	
+	</body>
+
+</html>

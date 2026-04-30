@@ -1,0 +1,81 @@
+/* config_style.css */
+
+h2 {
+    color: white;
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+}
+
+/* フォーム全体のレイアウト */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1); /* ほんのり透ける背景 */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 400px;
+}
+
+/* ラベルの設定 */
+label {
+    color: #79F3CA; /* アクセントカラー */
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* 入力欄（input）のスタイリング */
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid white;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    box-sizing: border-box; /* パディングを含めたサイズ計算 */
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #79F3CA;
+    box-shadow: 0 0 10px rgba(121, 243, 202, 0.5);
+}
+
+/* 保存ボタン（flag_button等と共通感を持たせる） */
+button[type="submit"] {
+    background-color: #B22222;
+    color: white;
+    border: 2px solid white;
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 0 10px #79F3CA;
+    transform: translateY(-2px);
+}
+
+/* 下部のテキストとリンク */
+p small {
+    color: #ccc;
+    margin-top: 15px;
+}
+
+.container a {
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid white;
+    margin-top: 20px;
+    transition: opacity 0.3s;
+}
+
+.container a:hover {
+    opacity: 0.7;
+}

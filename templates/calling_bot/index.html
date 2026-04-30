@@ -1,0 +1,34 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+		<title>よびだしくん</title> <!--後で正式に決める-->
+
+		<link rel="stylesheet" href="{{url_for('static', filename='calling_bot/style.css')}}">
+		<link rel="stylesheet" href="{{url_for('static', filename='calling_bot/index_style.css')}}">
+
+		<!-- アニメーションの有無は検討中 -->
+		<script src="{{url_for('static', filename='calling_bot/scripts.js')}}" defer></script>
+	</head>
+	
+	<body>
+		<div class="container">
+			<form method="POST">
+					<button class="call_button {% if call %}calling{% endif %}" name="call_button" {% if call %}disabled{% endif %} data-call="{{ 'true' if call else 'false' }}">
+						<p class="button_text">
+							{% if call %}
+								呼び出し中…
+							{% else %}
+								呼び出す
+							{% endif %}
+						</p>
+					</button>
+			</form>
+		</div>
+	</body>
+
+</html>

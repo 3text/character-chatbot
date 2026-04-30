@@ -1,0 +1,35 @@
+<!-- top_page.html -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+		<title>操作画面</title> <!--後で正式に決める-->
+
+		<link rel="stylesheet" href="{{url_for('static', filename='calling_bot/style.css')}}">
+		<link rel="stylesheet" href="{{url_for('static', filename='calling_bot/top_page_style.css')}}">
+
+		<!-- アニメーションの有無は検討中 -->
+		<script src="{{url_for('static', filename='calling_bot/scripts.js')}}" defer></script>
+	</head>
+	
+	<body>
+
+		<div class="container">
+			<h1 class="head_line">設定</h1>
+				<nav>
+					<ul class="setting_list">
+						<li class="setting_element">
+							<a href="{{ url_for('callbot_bp.flag_checker_page') }}" class="menu_link">呼び出し状況確認</a>
+						</li>
+						<li class="setting_element">
+							<a href="{{ url_for('callbot_bp.config_page') }}" class="menu_link">システム設定</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+	</body>
+
+</html>

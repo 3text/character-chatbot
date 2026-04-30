@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>呼び出し確認 - よびだしくん</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='calling_bot/style.css') }}">
+	<link rel="stylesheet" href="{{url_for('static', filename='calling_bot/flag_button.css')}}">
+
+</head>
+<body>
+	<div class="container">
+		<h2 class="head_line">現在の状況</h2>
+		
+		{% if flag_button %}
+			<p style="color: red; font-weight: bold;">！！！ 誰かが呼んでいます ！！！</p>
+			<form method="POST">
+				<button class="flag_button" type="submit" name="flag_button" value="0">対応完了（フラグ解除）</button>
+			</form>
+		{% else %}
+			<p style="color: white; font-weight: bold;">呼び出しはありません。</p>
+			<form method="POST">
+				<button class="flag_button" type="submit" name="flag_button" value="1">テスト呼び出し</button>
+			</form>
+		{% endif %}
+		
+		<br>
+		<a style="color: white; font-weight: bold;" href="{{ url_for('callbot_bp.top_page') }}">メニューに戻る</a>
+	</div>
+</body>
+</html>

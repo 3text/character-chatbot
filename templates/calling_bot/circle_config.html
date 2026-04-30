@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>システム設定 - よびだしくん</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='calling_bot/style.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='calling_bot/config_style.css') }}">
+</head>
+<body>
+	<div class="container">
+		<h2>システム設定</h2>
+		
+		{# flashメッセージの表示 #}
+		{% with messages = get_flashed_messages() %}
+		  {% if messages %}
+			{% for message in messages %}
+			  <p style="color: yellow;">{{ message }}</p>
+			{% endfor %}
+		  {% endif %}
+		{% endwith %}
+
+		<form method="POST">
+			<label for="user_url">ntfy トピック名:</label><br>
+			<input type="text" id="user_url" name="user_url" value="{{ url }}" placeholder="例: my-secret-topic">
+			<button type="submit">設定を保存</button>
+		</form>
+		
+		<p><small>現在のURL: https://ntfy.sh/{{ url }}</small></p>
+
+		<br>
+		<a href="{{ url_for('callbot_bp.top_page') }}">メニューに戻る</a>
+	</div>
+</body>
+</html>
